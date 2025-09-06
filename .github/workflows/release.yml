@@ -67,30 +67,9 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           ## KDE 6 Template Manager ${{ env.TAG_NAME }}
-          
-          ### What's New
-          - ✅ Fully ported to KDE 6 compatibility
-          - ✅ Updated service menu path to `~/.local/share/kio/servicemenus`
-          - ✅ Replaced deprecated `kf5-config` with XDG standard approach
-          - ✅ Fixed uninstall script error handling
-          - ✅ Added proper execute permissions in install script
-          
-          ### Installation
-          1. Download the `KDE-6-Template-Manager-${{ env.TAG_NAME }}.tar.gz` file
-          2. Extract the archive: `tar -xzf KDE-6-Template-Manager-${{ env.TAG_NAME }}.tar.gz`
-          3. Run the install script: `./install.sh`
-          
-          ### Features
-          - Create templates from files or directories
-          - Edit existing templates (name, comment, icon)
-          - Remove templates
-          - Multi-language support
-          - KDE 6 Dolphin service menu integration
-          
-          ### Requirements
-          - KDE 6 Plasma
-          - Dolphin file manager
-          - kdialog (for GUI dialogs)
+
+          ### Changelog
+          ${{ github.event.head_commit.message }}
           
         files: ${{ env.ARCHIVE_NAME }}
         draft: false

@@ -1,1 +1,31 @@
-.idea/*
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Backup files
+*.bak
+*.backup
+
+# Test files
+test_*.sh
+test-release.sh
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+release-build/
+*.tar.gz
+
+# Local installation directories (for testing)
+~/.bin/TemplateManager*
+~/.local/share/kio/servicemenus/TemplateManager*
+~/.local/share/templates/source/

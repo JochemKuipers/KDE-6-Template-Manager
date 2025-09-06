@@ -1,0 +1,105 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up variables
+      id: vars
+      run: |
+        if [[ $GITHUB_REF == refs/tags/* ]]; then
+          echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        else
+          echo "TAG_NAME=v$(date +%Y.%m.%d)" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Create archive
+      run: |
+        # Create a clean directory for the release
+        mkdir -p release-build
+        
+        # Copy important files only (exclude test scripts)
+        cp install.sh uninstall.sh TemplateCreator.sh TemplateEditor.sh TemplateEraser.sh TemplateManagerLocalization.sh TemplateManagerTools.sh release-build/
+        cp *.desktop release-build/
+        cp *.png release-build/
+        cp README.md release-build/
+        cp LICENSE release-build/
+        
+        # Copy screenshots directory if it exists
+        if [ -d "screenshots" ]; then
+          cp -r screenshots release-build/
+        fi
+        
+        # Create tar.gz archive
+        tar -czf "KDE-6-Template-Manager-${TAG_NAME}.tar.gz" -C release-build .
+        
+        # Display archive contents
+        echo "Archive contents:"
+        tar -tzf "KDE-6-Template-Manager-${TAG_NAME}.tar.gz"
+        
+        # Set output for next step
+        echo "ARCHIVE_NAME=KDE-6-Template-Manager-${TAG_NAME}.tar.gz" >> $GITHUB_ENV
+        echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
+        
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.TAG_NAME }}
+        release_name: KDE 6 Template Manager ${{ env.TAG_NAME }}
+        body: |
+          ## KDE 6 Template Manager ${{ env.TAG_NAME }}
+          
+          ### What's New
+          - ✅ Fully ported to KDE 6 compatibility
+          - ✅ Updated service menu path to `~/.local/share/kio/servicemenus`
+          - ✅ Replaced deprecated `kf5-config` with XDG standard approach
+          - ✅ Fixed uninstall script error handling
+          - ✅ Added proper execute permissions in install script
+          
+          ### Installation
+          1. Download the `KDE-6-Template-Manager-${{ env.TAG_NAME }}.tar.gz` file
+          2. Extract the archive: `tar -xzf KDE-6-Template-Manager-${{ env.TAG_NAME }}.tar.gz`
+          3. Run the install script: `./install.sh`
+          
+          ### Features
+          - Create templates from files or directories
+          - Edit existing templates (name, comment, icon)
+          - Remove templates
+          - Multi-language support
+          - KDE 6 Dolphin service menu integration
+          
+          ### Requirements
+          - KDE 6 Plasma
+          - Dolphin file manager
+          - kdialog (for GUI dialogs)
+          
+        draft: false
+        prerelease: false
+        
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./${{ env.ARCHIVE_NAME }}
+        asset_name: ${{ env.ARCHIVE_NAME }}
+        asset_content_type: application/gzip
+        
+    - name: Cleanup
+      run: |
+        rm -rf release-build
+        rm -f "KDE-6-Template-Manager-${TAG_NAME}.tar.gz"

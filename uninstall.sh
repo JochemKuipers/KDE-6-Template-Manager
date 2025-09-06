@@ -23,6 +23,10 @@ fi
 # Remove service menu files if they exist
 [ -f "$service_folder/TemplateManager_File.desktop" ] && rm "$service_folder/TemplateManager_File.desktop"
 [ -f "$service_folder/TemplateManager_Dir.desktop" ] && rm "$service_folder/TemplateManager_Dir.desktop"
+# Remove wrapper scripts
+[ -f "$service_folder/template-creator-wrapper.sh" ] && rm "$service_folder/template-creator-wrapper.sh"
+[ -f "$service_folder/template-editor-wrapper.sh" ] && rm "$service_folder/template-editor-wrapper.sh"
+[ -f "$service_folder/template-eraser-wrapper.sh" ] && rm "$service_folder/template-eraser-wrapper.sh"
 
 # Ask user if they want to remove existing templates
 if kdialog --warningyesno "$(str_uninstall_confirmation_msg)" --title "$(str_window_title)" --icon "$creator_icon" 2>/dev/null; then

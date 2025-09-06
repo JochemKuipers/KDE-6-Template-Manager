@@ -23,10 +23,10 @@ Name[el]=Πρόσθετο διαχειριστή προτύπων KDE 6
 Name[hu]=KDE 6 Sablonkezelő beépülő modul
 Name[da]=KDE 6 Template Manager-plugin
 Icon=favorite
-Type=Service
+Type=Application
 ServiceTypes=KonqPopupMenu/Plugin;
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
-MimeType=all/allfiles;
+MimeType=application/octet-stream;
 Actions=TemplateCreator;TemplateEditor;TemplateEraser;
 X-KDE-StartupNotify=false
 X-KDE-Submenu=Manage template(s)
@@ -79,8 +79,7 @@ Name[el]=Δημιουργία προτύπου από αυτό το αρχείο
 Name[hu]=Hozzon létre sablont ebből a fájlból
 Name[da]=Opret skabelon fra denne fil
 Icon=favorite
-Exec=$HOME/.bin/TemplateCreator.sh %f
-Encoding=UTF-8
+Exec=$HOME/.local/share/kio/servicemenus/template-creator-wrapper.sh %f
 
 [Desktop Action TemplateEditor]
 Name=Edit existing template...
@@ -107,8 +106,7 @@ Name[el]=Επεξεργασία υπάρχοντος προτύπου...
 Name[hu]=Meglévő sablon szerkesztése...
 Name[da]=Rediger eksisterende skabelon...
 Icon=edit
-Exec=$HOME/.bin/TemplateEditor.sh
-Encoding=UTF-8
+Exec=$HOME/.local/share/kio/servicemenus/template-editor-wrapper.sh
 
 [Desktop Action TemplateEraser]
 Name=Remove existing template(s)...
@@ -135,5 +133,4 @@ Name[el]=Κατάργηση υπαρχόντων προτύπων...
 Name[hu]=Meglévő sablon (ok) eltávolítása...
 Name[da]=Fjern eksisterende skabeloner...
 Icon=delete
-Exec=$HOME/.bin/TemplateEraser.sh
-Encoding=UTF-8
+Exec=$HOME/.local/share/kio/servicemenus/template-eraser-wrapper.sh

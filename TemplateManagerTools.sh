@@ -58,4 +58,16 @@ function get_template_desktop_path() # (templatePath: str)
     printf "%s" "$path"
 }
 
+function does_template_exist_with_same_name() { # (currentTemplatePath: str, newTemplateName: str)
+    local exists shortname
+    exists=1
+    for file in "$template_src_folder"/*; do
+        shortname="$(get_filename_wo_extension "$file")"
+        if [ "$2" == "$shortname" ] && [ "$(get_filename_wo_extension "$1")" != "$2" ]; then
+            exists=0
+        fi
+    done
+    return $exists
+}
+
 # endregion

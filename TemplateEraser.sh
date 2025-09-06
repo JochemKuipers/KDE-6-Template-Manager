@@ -1,9 +1,17 @@
 #!/bin/bash
 
 # shellcheck source=./TemplateManagerLocalization.sh
-. "$HOME/.bin/TemplateManagerLocalization.sh"
+if [ -f "$HOME/.bin/TemplateManagerLocalization.sh" ]; then
+    . "$HOME/.bin/TemplateManagerLocalization.sh"
+else
+    . "./TemplateManagerLocalization.sh"
+fi
 # shellcheck source=./TemplateManagerTools.sh
-. "$HOME/.bin/TemplateManagerTools.sh"
+if [ -f "$HOME/.bin/TemplateManagerTools.sh" ]; then
+    . "$HOME/.bin/TemplateManagerTools.sh"
+else
+    . "./TemplateManagerTools.sh"
+fi
 
 function cancel_operation()
 {

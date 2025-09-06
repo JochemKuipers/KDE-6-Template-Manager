@@ -39,6 +39,7 @@ jobs:
         # Copy important files only (exclude test scripts)
         cp install.sh uninstall.sh TemplateCreator.sh TemplateEditor.sh TemplateEraser.sh TemplateManagerLocalization.sh TemplateManagerTools.sh release-build/
         cp *.desktop release-build/
+        cp *-wrapper.sh release-build/
         cp *.png release-build/
         cp README.md release-build/
         cp LICENSE release-build/

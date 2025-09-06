@@ -1,9 +1,17 @@
 #!/bin/bash
 
 # shellcheck source=./TemplateManagerLocalization.sh
-. "$HOME/.bin/TemplateManagerLocalization.sh"
+if [ -f "$HOME/.bin/TemplateManagerLocalization.sh" ]; then
+    . "$HOME/.bin/TemplateManagerLocalization.sh"
+else
+    . "./TemplateManagerLocalization.sh"
+fi
 # shellcheck source=./TemplateManagerTools.sh
-. "$HOME/.bin/TemplateManagerTools.sh"
+if [ -f "$HOME/.bin/TemplateManagerTools.sh" ]; then
+    . "$HOME/.bin/TemplateManagerTools.sh"
+else
+    . "./TemplateManagerTools.sh"
+fi
 
 function cancel_operation()
 {
@@ -38,17 +46,6 @@ function value_by_default_for_new_template_type_radiolist() # (pathToFileOrDir: 
     fi
 }
 
-function does_template_exist_with_same_name() { # (currentTemplatePath: str, newTemplateName: str)
-    local exists shortname
-    exists=1
-    for file in "$template_src_folder"/*; do
-        shortname="$(get_filename_wo_extension "$file")"
-        if [ "$2" == "$shortname" ] && [ "$(get_filename_wo_extension "$1")" != "$2" ]; then
-            exists=0
-        fi
-    done
-    return $exists
-}
 
 
 # region Main

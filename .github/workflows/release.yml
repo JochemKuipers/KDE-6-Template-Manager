@@ -9,22 +9,30 @@ on:
 jobs:
   create-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       
     - name: Set up variables
       id: vars
       run: |
+        echo "GITHUB_REF: $GITHUB_REF"
         if [[ $GITHUB_REF == refs/tags/* ]]; then
-          echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          echo "TAG_NAME from tag: $TAG_NAME"
         else
-          echo "TAG_NAME=v$(date +%Y.%m.%d)" >> $GITHUB_OUTPUT
+          TAG_NAME="v$(date +%Y.%m.%d)"
+          echo "TAG_NAME generated: $TAG_NAME"
         fi
+        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_OUTPUT
+        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
         
     - name: Create archive
       run: |
+        echo "TAG_NAME from env: $TAG_NAME"
         # Create a clean directory for the release
         mkdir -p release-build
         
@@ -51,14 +59,12 @@ jobs:
         echo "ARCHIVE_NAME=KDE-6-Template-Manager-${TAG_NAME}.tar.gz" >> $GITHUB_ENV
         echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
         
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Release and Upload Assets
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ env.TAG_NAME }}
-        release_name: KDE 6 Template Manager ${{ env.TAG_NAME }}
+        name: KDE 6 Template Manager ${{ env.TAG_NAME }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           ## KDE 6 Template Manager ${{ env.TAG_NAME }}
           
@@ -86,18 +92,9 @@ jobs:
           - Dolphin file manager
           - kdialog (for GUI dialogs)
           
+        files: ${{ env.ARCHIVE_NAME }}
         draft: false
         prerelease: false
-        
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./${{ env.ARCHIVE_NAME }}
-        asset_name: ${{ env.ARCHIVE_NAME }}
-        asset_content_type: application/gzip
         
     - name: Cleanup
       run: |

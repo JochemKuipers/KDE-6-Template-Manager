@@ -14,8 +14,10 @@ mkdir -p "$template_src_folder"
 chmod +x "$bin_dir/TemplateCreator.sh"
 chmod +x "$bin_dir/TemplateEditor.sh"
 chmod +x "$bin_dir/TemplateEraser.sh"
+chmod +x "$bin_dir/TemplateManagerLocalization.sh"
+chmod +x "$bin_dir/TemplateManagerTools.sh"
 
 /bin/cp "./TemplateManager_File.desktop" "$service_folder"
 /bin/cp "./TemplateManager_Dir.desktop" "$service_folder"
 
-kdialog --msgbox "$(str_installed)" --title "$(str_window_title)" --icon "$creator_icon"
+kdialog --msgbox "$(str_installed)" --title "$(str_window_title)" --icon "$creator_icon" 2>/dev/null

@@ -1,6 +1,6 @@
-# KDE 5 Template Manager
+# KDE 6 Template Manager
 
-### KDE 5 Dolphin Service Menu for managing templates.
+### KDE 6 Dolphin Service Menu for managing templates.
 
 <p align="center">
     <a href="https://kde.org/"><img src="https://avatars.githubusercontent.com/u/14312869?s=200&v=4" alt="KDE logo" width="70" style="border-radius:10%"/></a>
@@ -17,7 +17,7 @@ file format intended specifically for a particular application and help us to cr
 automatically. They are supported by Desktop Environments and File Managers used in most of the Linux
 distributions.
 
-*KDE 5 Plasma* and *Dolphin* also support them, but you have to create a **.desktop* file manually 
+*KDE 6 Plasma* and *Dolphin* also support them, but you have to create a **.desktop* file manually 
 to create the template, which has a difficult syntax to remember. The goal of this project is to 
 create a **Dolphin Service Menu for building templates automatically** just by selecting the
 desired file / directory, letting the user to choose the different template parameters (name, comments, icon).

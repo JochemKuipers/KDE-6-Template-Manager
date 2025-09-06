@@ -57,47 +57,47 @@ function str_installed()
 {
     case "$first_locale" in
         "es")
-            printf "Plugin Administrador de Plantillas para KDE 5 instalado existosamente.";;
+            printf "Plugin Administrador de Plantillas para KDE 6 instalado existosamente.";;
         "fr")
-            printf "Le plugin KDE 5 Template Manager a été installé avec succès.";;
+            printf "Le plugin KDE 6 Template Manager a été installé avec succès.";;
         "it")
-            printf "Il plugin KDE 5 Template Manager installato con successo.";;
+            printf "Il plugin KDE 6 Template Manager installato con successo.";;
         "de")
-            printf "KDE 5 Template Manager Plugin erfolgreich installiert.";;
+            printf "KDE 6 Template Manager Plugin erfolgreich installiert.";;
         "pt")
-            printf "O plugin do gerenciador de modelos do KDE 5 foi instalado com sucesso.";;
+            printf "O plugin do gerenciador de modelos do KDE 6 foi instalado com sucesso.";;
         "ru")
-            printf "Плагин KDE 5 Template Manager успешно установлен.";;
+            printf "Плагин KDE 6 Template Manager успешно установлен.";;
         "nl")
-            printf "De KDE 5-sjabloonbeheerplug-in is geïnstalleerd.";;
+            printf "De KDE 6-sjabloonbeheerplug-in is geïnstalleerd.";;
         "cs")
-            printf "Plugin Správce šablon KDE 5 byl úspěšně nainstalován.";;
+            printf "Plugin Správce šablon KDE 6 byl úspěšně nainstalován.";;
         "pl")
-            printf "Wtyczka menedżera szablonów KDE 5 pomyślnie zainstalowana.";;
+            printf "Wtyczka menedżera szablonów KDE 6 pomyślnie zainstalowana.";;
         "ro")
-            printf "KDE 5 Template Manager Plugin a fost instalat cu succes.";;
+            printf "KDE 6 Template Manager Plugin a fost instalat cu succes.";;
         "et")
-            printf "KDE 5 mallihalduri pistikprogrammi installimine õnnestus.";;
+            printf "KDE 6 mallihalduri pistikprogrammi installimine õnnestus.";;
         "fi")
-            printf "KDE 5 Template Manager -laajennuksen asennus onnistui.";;
+            printf "KDE 6 Template Manager -laajennuksen asennus onnistui.";;
         "sv")
-            printf "KDE 5 Template Manager Plugin har installerats.";;
+            printf "KDE 6 Template Manager Plugin har installerats.";;
         "nb" | "nn" | "no")
-            printf "KDE 5 Template Manager Plugin er installert.";;
+            printf "KDE 6 Template Manager Plugin er installert.";;
         "tr")
-            printf "KDE 5 Template Manager Eklentisi başarıyla kuruldu.";;
+            printf "KDE 6 Template Manager Eklentisi başarıyla kuruldu.";;
         "uk")
-            printf "Плагін KDE 5 Template Manager успішно встановлено.";;
+            printf "Плагін KDE 6 Template Manager успішно встановлено.";;
         "is")
-            printf "Tappi KDE 5 sniðmátastjóra var sett upp.";;
+            printf "Tappi KDE 6 sniðmátastjóra var sett upp.";;
         "el")
-            printf "Η προσθήκη KDE 5 Template Manager εγκαταστάθηκε με επιτυχία.";;
+            printf "Η προσθήκη KDE 6 Template Manager εγκαταστάθηκε με επιτυχία.";;
         "hu")
-            printf "A KDE 5 Template Manager beépülő modul sikeresen telepítve.";;
+            printf "A KDE 6 Template Manager beépülő modul sikeresen telepítve.";;
         "da")
-            printf "KDE 5 Template Manager Plugin er installeret.";;
+            printf "KDE 6 Template Manager Plugin er installeret.";;
         *)
-            printf "KDE 5 Template Manager Plugin successfully installed.";;
+            printf "KDE 6 Template Manager Plugin successfully installed.";;
     esac
 }
 
@@ -157,47 +157,47 @@ function str_uninstalled()
 {
     case "$first_locale" in
         "es")
-            printf "Plugin Administrador de Plantillas para KDE 5 desinstalado existosamente.";;
+            printf "Plugin Administrador de Plantillas para KDE 6 desinstalado existosamente.";;
         "fr")
-            printf "Le plugin KDE 5 Template Manager a été désinstallé avec succès.";;
+            printf "Le plugin KDE 6 Template Manager a été désinstallé avec succès.";;
         "it")
-            printf "Il plugin KDE 5 Template Manager è stato disinstallato correttamente.";;
+            printf "Il plugin KDE 6 Template Manager è stato disinstallato correttamente.";;
         "de")
-            printf "KDE 5 Template Manager Plugin erfolgreich deinstalliert.";;
+            printf "KDE 6 Template Manager Plugin erfolgreich deinstalliert.";;
         "pt")
-            printf "O plugin do gerenciador de modelos do KDE 5 foi desinstalado com sucesso.";;
+            printf "O plugin do gerenciador de modelos do KDE 6 foi desinstalado com sucesso.";;
         "ru")
-            printf "Плагин KDE 5 Template Manager успешно удалён.";;
+            printf "Плагин KDE 6 Template Manager успешно удалён.";;
         "nl")
-            printf "De KDE 5-sjabloonbeheerplug-in is verwijderd.";;
+            printf "De KDE 6-sjabloonbeheerplug-in is verwijderd.";;
         "cs")
-            printf "Plugin Správce šablon KDE 5 byl úspěšně odinstalován.";;
+            printf "Plugin Správce šablon KDE 6 byl úspěšně odinstalován.";;
         "pl")
-            printf "Wtyczka KDE 5 Template Manager została pomyślnie odinstalowana.";;
+            printf "Wtyczka KDE 6 Template Manager została pomyślnie odinstalowana.";;
         "ro")
-            printf "KDE 5 Template Manager Plugin dezinstalat cu succes.";;
+            printf "KDE 6 Template Manager Plugin dezinstalat cu succes.";;
         "et")
-            printf "KDE 5 mallihalduri pistikprogrammi desinstallimine õnnestus.";;
+            printf "KDE 6 mallihalduri pistikprogrammi desinstallimine õnnestus.";;
         "fi")
-            printf "KDE 5 Template Manager -laajennuksen asennus onnistui.";;
+            printf "KDE 6 Template Manager -laajennuksen asennus onnistui.";;
         "sv")
-            printf "Plugin-programmet KDE 5 Template Manager avinstallerades.";;
+            printf "Plugin-programmet KDE 6 Template Manager avinstallerades.";;
         "nb" | "nn" | "no")
-            printf "KDE 5 Template Manager Plugin ble avinstallert.";;
+            printf "KDE 6 Template Manager Plugin ble avinstallert.";;
         "tr")
-            printf "KDE 5 Template Manager Eklentisi başarıyla kaldırıldı.";;
+            printf "KDE 6 Template Manager Eklentisi başarıyla kaldırıldı.";;
         "uk")
-            printf "Ви Плагін KDE 5 Template Manager успішно видалено.";;
+            printf "Ви Плагін KDE 6 Template Manager успішно видалено.";;
         "is")
-            printf "Tappi KDE 5 sniðmátsstjóra tókst að fjarlægja.";;
+            printf "Tappi KDE 6 sniðmátsstjóra tókst að fjarlægja.";;
         "el")
-            printf "Η εγκατάσταση του KDE 5 Template Manager απεγκαταστάθηκε με επιτυχία.";;
+            printf "Η εγκατάσταση του KDE 6 Template Manager απεγκαταστάθηκε με επιτυχία.";;
         "hu")
-            printf "A KDE 5 Template Manager beépülő modul sikeresen eltávolítva.";;
+            printf "A KDE 6 Template Manager beépülő modul sikeresen eltávolítva.";;
         "da")
-            printf "KDE 5 Template Manager Plugin blev afinstalleret.";;
+            printf "KDE 6 Template Manager Plugin blev afinstalleret.";;
         *)
-            printf "KDE 5 Template Manager Plugin successfully uninstalled.";;
+            printf "KDE 6 Template Manager Plugin successfully uninstalled.";;
     esac
 }
 

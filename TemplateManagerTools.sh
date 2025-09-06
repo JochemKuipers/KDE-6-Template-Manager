@@ -11,33 +11,17 @@ bin_dir="$HOME/.bin/"
 if [ "$(xdg-user-dir TEMPLATES)" != "$HOME" ]; then
     template_folder="$(xdg-user-dir TEMPLATES)"
 else
-    IFS=':' read -ra template_installation_paths <<< "$(kf5-config --path templates)"
-    counter=0
-    unset template_folder
-    while [ $counter -lt ${#template_installation_paths[@]} ] && [ -z "$template_folder" ]; do
-        path="$(realpath "${template_installation_paths[$counter]}")"
-        if [ "${path##$HOME}" != "${path}" ]; then
-            template_folder="$path"
-        fi
-        ((counter++))
-    done
+    # Use XDG standard approach for KDE 6
+    template_folder="$HOME/.local/share/templates"
+    # Create the directory if it doesn't exist
+    mkdir -p "$template_folder"
 fi
 template_src_folder="$template_folder/source"
 
-IFS=':' read -ra service_installation_paths <<< "$(kf5-config --path services)"
-counter=0
-unset service_folder
-while [ $counter -lt ${#service_installation_paths[@]} ] && [ -z "$service_folder" ]; do
-    path="$(realpath "${service_installation_paths[$counter]}")"
-    if [ "${path##$HOME}" != "${path}" ]; then
-        if [ -e "$path/ServiceMenus" ]; then
-            service_folder="$path/ServiceMenus"
-        else
-            service_folder="$path"
-        fi
-    fi
-    ((counter++))
-done
+# Use XDG standard approach for KDE 6 services
+service_folder="$HOME/.local/share/kio/servicemenus"
+# Create the directory if it doesn't exist
+mkdir -p "$service_folder"
 
 # endregion
 
